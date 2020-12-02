@@ -23,6 +23,7 @@ import {
 import { TooltipSize } from '../lib/directives/show-clipped-text.directive';
 import { ClrDatagridWidgetObject } from '../utils/test/datagrid/datagrid.wo';
 import { VcdDatagridWidgetObject } from '../utils/test/datagrid/vcd-datagrid.wo';
+import { timeout } from '../utils/test/test-utils';
 import { WidgetFinder } from '../utils/test/widget-object';
 import {
     ActivityIndicatorType,
@@ -302,16 +303,16 @@ describe('DatagridComponent', () => {
                         };
                         this.finder.detectChanges();
                         this.clrGridWidget.selectRow(0);
-                        await new Promise((resolve) => setTimeout(() => resolve()));
+                        await timeout(0);
                         this.clrGridWidget.selectRow(1);
-                        await new Promise((resolve) => setTimeout(() => resolve()));
+                        await timeout(0);
                         expect(this.finder.hostComponent.datagridSelection).toEqual(mockData);
                         this.finder.hostComponent.gridData = {
                             items: [mockData[0]],
                             totalItems: 2,
                         };
                         this.finder.detectChanges();
-                        await new Promise((resolve) => setTimeout(() => resolve()));
+                        await timeout(0);
                         this.finder.detectChanges();
                         expect(this.finder.hostComponent.datagridSelection).toEqual([mockData[0]]);
                     });
@@ -349,7 +350,7 @@ describe('DatagridComponent', () => {
                         totalItems: 2,
                     };
                     this.finder.detectChanges();
-                    await new Promise((resolve) => setTimeout(() => resolve()));
+                    await timeout(0);
                     this.finder.detectChanges();
                     console.log(this.finder.hostComponent.datagridSelection);
                     expect(this.finder.hostComponent.datagridSelection).toEqual([mockData[1]]);
